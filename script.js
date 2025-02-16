@@ -41,22 +41,17 @@ class Quiz {
 
     showQuestion() {
         const question = this.questions[this.currentQuestion];
-        document.getElementById('question-text').textContent = question.question;
+        document.getElementById('question').innerText = question.question;
 
-        const optionsGrid = document.getElementById('options-grid');
+        const optionsGrid = document.getElementById('options');
         optionsGrid.innerHTML = '';
 
         question.options.forEach((option, index) => {
-            const optionElement = document.createElement('div');
-            optionElement.className = 'option';
-
-            const textElement = document.createElement('span');
-            textElement.textContent = option;
-
-            optionElement.appendChild(textElement);
+            const optionButton = document.createElement('button');
+            optionButton.innerText = option;
 
             optionElement.addEventListener('click', () => this.selectAnswer(index));
-            optionsGrid.appendChild(optionElement);
+            optionsGrid.appendChild(optionButton);
         });
     }
 
@@ -67,11 +62,6 @@ class Quiz {
         const correct = this.questions[this.currentQuestion].answer;
         this.userAnswers.push({ selected, correct });
 	this.results.push(selected === correct);
-
-        // Update UI to show selected answer
-        const options = document.querySelectorAll('.option');
-        options.forEach(option => option.classList.remove('selected'));
-        options[index].classList.add('selected');
 
         // Move to next question after a short delay
         if (this.currentQuestion < this.questions.length - 1) {
