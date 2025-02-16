@@ -36,6 +36,7 @@ class Quiz {
         document.getElementById('welcome-page').classList.remove('active');
         document.getElementById('welcome-page').style.display = 'none';
         document.getElementById('quiz').classList.add('active');
+	document.getElementById('quiz').style.display = 'block';
         this.showQuestion();
     }
 
@@ -78,7 +79,7 @@ class Quiz {
     finishQuiz() {
         document.getElementById('quiz').classList.remove('active');
         document.getElementById('quiz').style.display = 'none';
-        document.getElementById('finish-page').style.display = 'flex';	
+        document.getElementById('finish-page').style.display = 'block';	
     }
 
     sendResults() {
@@ -93,7 +94,7 @@ class Quiz {
         Telegram.WebApp.sendData(dataToSend);
 
         document.getElementById('finish-page').style.display = 'none';
-        document.getElementById('results-page').style.display = 'flex';	
+        document.getElementById('results-page').style.display = 'block';	
 	this.displayResultsChart();
 
 	document.getElementById("share-whatsapp").addEventListener("click", () => {
@@ -135,7 +136,10 @@ class Quiz {
 	    options: {
 		scales: {
 		    y: {
-			beginAtZero: true
+			beginAtZero: true,
+			ticks: {
+			    color: 'white'
+		    	}
 		    }
 		}
 	    }
