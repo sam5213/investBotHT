@@ -153,21 +153,21 @@ class Quiz {
 
 	document.getElementById("share-whatsapp").addEventListener("click", () => {
 	    const url = "https://t.me/investHT_bot";
-	    const message = `Мой результат в квизе ${this.incorrectAnswersCount} из 7! Проверь тоже свои силы в @investHT_bot. ${url}`;
+	    const message = `Мой результат в квизе ${this.correctAnswersCount} из 7! Проверь тоже свои силы в @investHT_bot.`;
 	    const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
 	    window.open(whatsappLink, "_blank", "width=auto", "height=auto");
 	});
 
 	document.getElementById("share-telegram").addEventListener("click", () => {
 	    const url = "https://t.me/investHT_bot";
-	    const message = `Мой результат в квизе ${this.incorrectAnswersCount} из 7! Проверь тоже свои силы в @investHT_bot. ${url}`;
+	    const message = `Мой результат в квизе ${this.correctAnswersCount} из 7! Проверь тоже свои силы в @investHT_bot.`;
 	    const telegramLink = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
 	    window.open(telegramLink, "_blank", "width=auto", "height=auto");
 	});
 
 	document.getElementById("share-vk").addEventListener("click", () => {
 	    const url = "https://t.me/investHT_bot";
-	    const VKlink = `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=Мой результат в квизе ${this.incorrectAnswersCount} из 7! Проверь тоже свои силы в телеграм боте @investHT_bot.`;
+	    const VKlink = `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=Мой результат в квизе ${this.correctAnswersCount} из 7! Проверь тоже свои силы в телеграм боте @investHT_bot.`;
 	    window.open(VKlink, "_blank", "width=auto,height=auto");
 	});	
 }
