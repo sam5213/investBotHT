@@ -140,6 +140,11 @@ class Quiz {
 			ticks: {
 			    color: 'white'
 		    	}
+		    },
+		    x: {
+			ticks: {
+			    color: 'white'
+		    	}
 		    }
 		},
 		plugins: {
