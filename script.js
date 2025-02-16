@@ -35,7 +35,7 @@ class Quiz {
     startQuiz() {
         document.getElementById('welcome-page').classList.remove('active');
         document.getElementById('welcome-page').style.display = 'none';
-        document.getElementById('quiz-page').classList.add('active');
+        document.getElementById('quiz').classList.add('active');
         this.showQuestion();
     }
 
@@ -86,8 +86,8 @@ class Quiz {
 
 
     finishQuiz() {
-        document.getElementById('quiz-page').classList.remove('active');
-        document.getElementById('quiz-page').style.display = 'none';
+        document.getElementById('quiz').classList.remove('active');
+        document.getElementById('quiz').style.display = 'none';
         document.getElementById('finish-page').style.display = 'flex';	
     }
 
