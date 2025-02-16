@@ -109,7 +109,7 @@ class Quiz {
         this.answers[this.currentQuestion] = index;
 
         const selected = this.questions[this.currentQuestion].options[index];
-        const correct = this.questions[this.currentQuestion].options[0];
+        const correct = this.questions[this.currentQuestion].answer;
         this.userAnswers.push({ selected, correct });
 	this.results.push(selected === correct);
 
