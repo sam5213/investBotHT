@@ -141,9 +141,17 @@ class Quiz {
 			    color: 'white'
 		    	}
 		    }
+		},
+		plugins: {
+		    legend: {
+		    	labels: {
+			    color: 'white'
+		    	}
+		    }
 		}
-	    }
-	});
+	    },
+	    plugins: [ChartDataLabels]
+	);
 	
 	document.getElementById('resultsChart').style.display = 'block';
     }
