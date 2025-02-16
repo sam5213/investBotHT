@@ -50,7 +50,7 @@ class Quiz {
             const optionButton = document.createElement('button');
             optionButton.innerText = option;
 
-            optionElement.addEventListener('click', () => this.selectAnswer(index));
+            optionButton.addEventListener('click', () => this.selectAnswer(index));
             optionsGrid.appendChild(optionButton);
         });
     }
