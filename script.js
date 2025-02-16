@@ -151,7 +151,7 @@ class Quiz {
 		}
 	    },
 	    plugins: [ChartDataLabels]
-	);
+	});
 	
 	document.getElementById('resultsChart').style.display = 'block';
     }
