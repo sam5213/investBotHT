@@ -16,14 +16,6 @@ class Quiz {
         document.getElementById('start-button').addEventListener('click', () => this.startQuiz());
 	document.getElementById('finish-button').addEventListener('click', () => this.sendResults());
 
-        // Create SVG icons
-        this.icons = [
-            this.createIcon('circle', '#3b82f6'),
-            this.createIcon('square', '#22c55e'),
-            this.createIcon('triangle', '#eab308'),
-            this.createIcon('x', '#ef4444')
-        ];
-
         // Загрузка вопросов из JSON-файла
         await this.loadQuestions();
     }
@@ -38,39 +30,6 @@ class Quiz {
         } catch (error) {
             console.error('Произошла ошибка при загрузке вопросов:', error);
         }
-    }
-
-    createIcon(type, color) {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('viewBox', '0 0 24 24');
-        svg.setAttribute('width', '16');
-        svg.setAttribute('height', '16');
-        svg.setAttribute('fill', 'none');
-        svg.setAttribute('stroke', color);
-        svg.setAttribute('stroke-width', '2');
-        svg.setAttribute('stroke-linecap', 'round');
-        svg.setAttribute('stroke-linejoin', 'round');
-
-        let path = '';
-        switch(type) {
-            case 'circle':
-                path = 'M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z';
-                break;
-            case 'square':
-                path = 'M3 3h18v18H3z';
-                break;
-            case 'triangle':
-                path = 'M3 20h18L12 4z';
-                break;
-            case 'x':
-                svg.innerHTML = '<path d="M18 6L6 18M6 6l12 12"/>';
-                return svg;
-        }
-
-        const pathElement = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        pathElement.setAttribute('d', path);
-        svg.appendChild(pathElement);
-        return svg;
     }
 
     startQuiz() {
@@ -91,13 +50,9 @@ class Quiz {
             const optionElement = document.createElement('div');
             optionElement.className = 'option';
 
-            const iconClone = this.icons[index].cloneNode(true);
-            iconClone.classList.add('option-icon');
-
             const textElement = document.createElement('span');
             textElement.textContent = option;
 
-            optionElement.appendChild(iconClone);
             optionElement.appendChild(textElement);
 
             optionElement.addEventListener('click', () => this.selectAnswer(index));
