@@ -13,8 +13,7 @@ class Quiz {
 
     async init() {
         document.getElementById('start-button').addEventListener('click', () => this.startQuiz());
-        document.getElementById('finish-button').addEventListener('click', () => this.prepareToSendResults());
-
+	    
         await this.loadQuestions();
         this.initMainButton();
     }
@@ -85,18 +84,8 @@ class Quiz {
         Telegram.WebApp.MainButton
             .setText('Отправить результаты')
             .show();
-	this.prepareToSendResults();
-    }
-
-    prepareToSendResults() {
-        //document.getElementById('finish-page').style.display = 'none';
-        //document.getElementById('results-page').style.display = 'block';
-        this.displayResultsChart();
+	this.displayResultsChart();
 	this.initSocialButtons();
-        
-        Telegram.WebApp.MainButton
-            .setText('Подтвердить отправку')
-            .show();
     }
 
     sendResults() {
@@ -139,15 +128,12 @@ class Quiz {
                 }]
             },
             options: {
-                // responsive: true,
-                // maintainAspectRatio: false,
                 scales: {
                     y: { beginAtZero: true, ticks: { color: 'white' } },
                     x: { ticks: { color: 'white' } }
                 },
                 plugins: {
                     legend: { labels: { color: 'white' } }
-                    //datalabels: { color: 'white' }
                 }
             },
 	        plugins: [ChartDataLabels]
