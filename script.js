@@ -149,22 +149,42 @@ class Quiz {
             telegram: `https://t.me/share/url?url=${encodeURIComponent('https://t.me/investHT_bot')}&text=${encodeURIComponent(message)}`,
             vk: `https://vk.com/share.php?url=${encodeURIComponent('https://t.me/investHT_bot')}&title=${encodeURIComponent(message)}`
         };
-	 // Открываем окно
-	const newWindow = window.open(urls[platform], '_blank');
-
-	// Проверяем, было ли окно открыто
-	if (newWindow) {
-		// Вызываем через 100 мс (время на инициализацию окна)
-		setTimeout(() => {
-		    this.sendResults();
-		}, 100);
-	} else {
-		// Если окно заблокировано - всё равно отправляем данные
-		this.sendResults();
-	}
+	
+	this.openDeepLink(urls[platform]);
+	
+	setTimeout(() => {
+	    this.sendResults();
+	}, 300);
 
         //window.open(urls[platform], '_blank', "width=auto,height=auto");
     }
+
+	openDeepLink(url) {
+	    // Специальная обработка для Telegram WebView
+	    if (typeof Telegram !== 'undefined' && Telegram.WebApp?.openLink) {
+		Telegram.WebApp.openLink(url);
+		return;
+	    }
+	
+	    // Универсальное решение для других платформ
+	    const newWindow = window.open('', '_blank');
+	    
+	    try {
+		if (newWindow) {
+		    // Попытка редиректа в существующем окне
+		    newWindow.location.href = url;
+		} else {
+		    // Фолбек для строгих блокировщиков
+		    window.location.href = url;
+		}
+	    } catch (e) {
+		// Экстренный фолбек
+		const link = document.createElement('a');
+		link.href = url;
+		link.target = '_blank';
+		link.click();
+	    }
+	}
 }
 
 document.addEventListener('DOMContentLoaded', () => {
