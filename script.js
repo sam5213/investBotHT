@@ -40,7 +40,9 @@ class Quiz {
 
     startQuiz() {
         document.getElementById('welcome-page').classList.remove('active');
+        document.getElementById('welcome-page').style.display = 'none';
         document.getElementById('quiz').classList.add('active');
+        document.getElementById('quiz').style.display = 'block';
         this.showQuestion();
     }
 
@@ -78,6 +80,7 @@ class Quiz {
 
     finishQuiz() {
         document.getElementById('quiz').classList.remove('active');
+        document.getElementById('quiz').style.display = 'none';
         document.getElementById('finish-page').style.display = 'block';
         Telegram.WebApp.MainButton
             .setText('Отправить результаты')
@@ -146,6 +149,7 @@ class Quiz {
                 }
             }
         });
+        document.getElementById('resultsChart').style.display = 'block';
     }
 
     shareOnPlatform(platform) {
