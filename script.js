@@ -85,12 +85,14 @@ class Quiz {
         Telegram.WebApp.MainButton
             .setText('Отправить результаты')
             .show();
+	this.prepareToSendResults();
     }
 
     prepareToSendResults() {
-        document.getElementById('finish-page').style.display = 'none';
-        document.getElementById('results-page').style.display = 'block';
+        //document.getElementById('finish-page').style.display = 'none';
+        //document.getElementById('results-page').style.display = 'block';
         this.displayResultsChart();
+	this.initSocialButtons();
         
         Telegram.WebApp.MainButton
             .setText('Подтвердить отправку')
@@ -112,7 +114,7 @@ class Quiz {
         });
 
         Telegram.WebApp.MainButton.hide();
-        this.initSocialButtons();
+        //this.initSocialButtons();
     }
 
     initSocialButtons() {
