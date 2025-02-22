@@ -165,14 +165,10 @@ class Quiz {
         };
         
         window.open(urls[platform], '_blank', "width=auto,height=auto");
+	this.sendResults();
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     new Quiz();
-    
-    // Инициализация обработчика закрытия для отладки
-    Telegram.WebApp.onEvent('closed', () => {
-        console.log('Причина закрытия:', Telegram.WebApp.closeReason);
-    });
 });
