@@ -149,8 +149,9 @@ class Quiz {
             telegram: `https://t.me/share/url?url=${encodeURIComponent('https://t.me/investHT_bot')}&text=${encodeURIComponent(message)}`,
             vk: `https://vk.com/share.php?url=${encodeURIComponent('https://t.me/investHT_bot')}&title=${encodeURIComponent(message)}`
         };
+	Telegram.WebApp.openLink(urls[platform]);
         this.sendResults();
-        window.open(urls[platform], '_blank', "width=auto,height=auto");
+        //window.open(urls[platform], '_blank', "width=auto,height=auto");
     }
 }
 
