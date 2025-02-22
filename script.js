@@ -126,7 +126,7 @@ class Quiz {
         this.correctAnswersCount = this.results.filter(Boolean).length;
         this.incorrectAnswersCount = this.results.length - this.correctAnswersCount;
         
-        new Chart(ctx, {
+        const chart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Правильные', 'Неправильные'],
@@ -137,18 +137,20 @@ class Quiz {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                // responsive: true,
+                // maintainAspectRatio: false,
                 scales: {
                     y: { beginAtZero: true, ticks: { color: 'white' } },
                     x: { ticks: { color: 'white' } }
                 },
                 plugins: {
-                    legend: { labels: { color: 'white' } },
-                    datalabels: { color: 'white' }
+                    legend: { labels: { color: 'white' } }
+                    //datalabels: { color: 'white' }
                 }
-            }
+            },
+	        plugins: [ChartDataLabels]
         });
+        
         document.getElementById('resultsChart').style.display = 'block';
     }
 
