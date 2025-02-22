@@ -81,7 +81,7 @@ class Quiz {
     finishQuiz() {
         document.getElementById('quiz').classList.remove('active');
         document.getElementById('quiz').style.display = 'none';
-        document.getElementById('finish-page').style.display = 'block';
+        document.getElementById('results-page').style.display = 'block';
         Telegram.WebApp.MainButton
             .setText('Отправить результаты')
             .show();
@@ -162,7 +162,7 @@ class Quiz {
             vk: `https://vk.com/share.php?url=${encodeURIComponent('https://t.me/investHT_bot')}&title=${encodeURIComponent(message)}`
         };
         
-        window.open(urls[platform], '_blank');
+        window.open(urls[platform], '_blank', "width=auto,height=auto");
     }
 }
 
