@@ -149,8 +149,19 @@ class Quiz {
             telegram: `https://t.me/share/url?url=${encodeURIComponent('https://t.me/investHT_bot')}&text=${encodeURIComponent(message)}`,
             vk: `https://vk.com/share.php?url=${encodeURIComponent('https://t.me/investHT_bot')}&title=${encodeURIComponent(message)}`
         };
-	Telegram.WebApp.openLink(urls[platform]);
-        this.sendResults();
+	 // Открываем окно
+	const newWindow = window.open(urls[platform], '_blank');
+	
+	// Проверяем, было ли окно открыто
+	if (newWindow && !newWindow.closed) {
+		// Вызываем через 100 мс (время на инициализацию окна)
+		setTimeout(() => {
+		    this.sendResults();
+		}, 100);
+	} else {
+		// Если окно заблокировано - всё равно отправляем данные
+		this.sendResults();
+	}
         //window.open(urls[platform], '_blank', "width=auto,height=auto");
     }
 }
