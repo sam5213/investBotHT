@@ -152,9 +152,16 @@ class Quiz {
 	 // Открываем окно
 	const newWindow = window.open(urls[platform], '_blank');
 
-        setTimeout(() => {
-	    this.sendResults();
-	}, 100);
+	// Проверяем, было ли окно открыто
+	if (newWindow) {
+		// Вызываем через 100 мс (время на инициализацию окна)
+		setTimeout(() => {
+		    this.sendResults();
+		}, 100);
+	} else {
+		// Если окно заблокировано - всё равно отправляем данные
+		this.sendResults();
+	}
 
         //window.open(urls[platform], '_blank', "width=auto,height=auto");
     }
