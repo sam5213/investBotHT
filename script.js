@@ -102,7 +102,7 @@ class Quiz {
             disable_auto_closing: true 
         });
 
-        Telegram.WebApp.MainButton.hide();
+        //Telegram.WebApp.MainButton.hide();
         //this.initSocialButtons();
     }
 
@@ -149,9 +149,8 @@ class Quiz {
             telegram: `https://t.me/share/url?url=${encodeURIComponent('https://t.me/investHT_bot')}&text=${encodeURIComponent(message)}`,
             vk: `https://vk.com/share.php?url=${encodeURIComponent('https://t.me/investHT_bot')}&title=${encodeURIComponent(message)}`
         };
-        
+        this.sendResults();
         window.open(urls[platform], '_blank', "width=auto,height=auto");
-	this.sendResults();
     }
 }
 
